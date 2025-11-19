@@ -1,0 +1,36 @@
+Programa        → SentenciaLista EOF
+
+SentenciaLista  → Sentencia ';' SentenciaLista
+                | ε
+
+Sentencia       → DeclMatriz
+                | AsigMatriz
+                | Print
+
+DeclMatriz      → 'mat' id Dimension OptInit
+
+Dimension       → '[' num ',' num ']'
+
+OptInit         → '=' MatLiteral
+                | ε
+
+AsigMatriz      → id '=' Expresion
+
+Print           → 'print' '(' id ')'
+
+Expresion       → Operando '*' Operando
+
+Operando        → id
+                | MatLiteral
+
+MatLiteral      → '[[' FilaLista ']]'
+
+FilaLista       → Fila RestoFilas
+
+RestoFilas      → ',' Fila RestoFilas
+                | ε
+
+Fila            → num RestoNums
+
+RestoNums       → ',' num RestoNums
+                | ε
