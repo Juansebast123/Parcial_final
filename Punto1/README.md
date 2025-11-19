@@ -141,6 +141,3 @@ gram = GenerarGramaticaCRUD(
 ```
 
 ---
-
-## Autor
-Generado automáticamente como documentación del proyecto.
