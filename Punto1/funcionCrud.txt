@@ -1,0 +1,127 @@
+funcion GenerarGramaticaCRUD(operacionesCRUD, tiposSoportados, soportaPK):
+
+    // Crear estructura vacia donde se iran agregando reglas
+    Gramatica = nuevaGramatica()
+
+
+    Gramatica.agregar("Programa → SentenciaLista")
+
+
+    // Sentencias
+    
+    Gramatica.agregar("SentenciaLista → Sentencia SentenciaLista")
+    Gramatica.agregar("SentenciaLista → ε")
+
+
+    // Create
+    
+    si "CREATE" en operacionesCRUD entonces
+
+        // Sentencia → CreateTable ';'
+        Gramatica.agregar("Sentencia → CreateTable ';'")
+
+        // CreateTable → 'CREATE' 'TABLE' id '(' DefCampoLista OptPK ')'
+        Gramatica.agregar(
+            "CreateTable → 'CREATE' 'TABLE' id '(' DefCampoLista OptPK ')'"
+        )
+
+        // DefCampoLista → DefCampo RestCampos
+        Gramatica.agregar("DefCampoLista → DefCampo RestCampos")
+
+        // RestCampos → ',' DefCampo RestCampos | ε
+        Gramatica.agregar("RestCampos → ',' DefCampo RestCampos")
+        Gramatica.agregar("RestCampos → ε")
+
+        // DefCampo → id Tipo
+        Gramatica.agregar("DefCampo → id Tipo")
+
+        // OptPK (opcional)
+        si soportaPK entonces
+            Gramatica.agregar(
+                "OptPK → ',' 'PRIMARY' 'KEY' '(' id ')'"
+            )
+        fin si
+        Gramatica.agregar("OptPK → ε")
+    fin si
+
+
+    // Insert
+
+    si "INSERT" en operacionesCRUD entonces
+
+        // Sentencia → Insert ';'
+        Gramatica.agregar("Sentencia → Insert ';'")
+
+        // Ejemplo simple de Insert
+        Gramatica.agregar(
+            "Insert → 'INSERT' 'INTO' id 'VALUES' '(' Valor ')'"
+        )
+    fin si
+
+
+    // Select
+
+    si "SELECT" en operacionesCRUD entonces
+
+        // Sentencia → Select ';'
+        Gramatica.agregar("Sentencia → Select ';'")
+
+        // Select → 'SELECT' '*' 'FROM' id
+        Gramatica.agregar(
+            "Select → 'SELECT' '*' 'FROM' id"
+        )
+    fin si
+
+
+    // Update
+
+    si "UPDATE" en operacionesCRUD entonces
+
+        // Sentencia → Update ';'
+        Gramatica.agregar("Sentencia → Update ';'")
+
+        // Update → 'UPDATE' id 'SET' id2 '=' Valor
+        Gramatica.agregar(
+            "Update → 'UPDATE' id 'SET' id2 '=' Valor"
+        )
+    fin si
+
+
+    // Delete
+    
+    si "DELETE" en operacionesCRUD entonces
+
+        // Sentencia → Delete ';'
+        Gramatica.agregar("Sentencia → Delete ';'")
+
+        // Delete → 'DELETE' 'FROM' id
+        Gramatica.agregar(
+            "Delete → 'DELETE' 'FROM' id"
+        )
+    fin si
+
+
+    // -----------------------------------------------------------
+    // 7. TIPOS SOPORTADOS
+    //   (por ejemplo: INT, FLOAT, TEXT, etc.)
+    // -----------------------------------------------------------
+    para cada tipo en tiposSoportados:
+        // tipo.nombre podría ser "INT", "FLOAT", "TEXT", ...
+        produccion = "Tipo → '" + tipo.nombre + "'"
+        Gramatica.agregar(produccion)
+    fin para
+
+
+    // -----------------------------------------------------------
+    // 8. VALORES
+    // -----------------------------------------------------------
+    Gramatica.agregar("Valor → num")
+    Gramatica.agregar("Valor → str")
+    Gramatica.agregar("Valor → 'TRUE'")
+    Gramatica.agregar("Valor → 'FALSE'")
+
+
+    // -----------------------------------------------------------
+    // 9. RETORNAR LA GRAMÁTICA
+    // -----------------------------------------------------------
+    retornar Gramatica
