@@ -1,27 +1,27 @@
-# GenerarGramaticaCRUD
+# Funcion Gramatica CRUD
 
-Este documento describe la función `GenerarGramaticaCRUD`, la cual construye de manera dinámica una gramática libre de contexto orientada a operaciones tipo SQL (CRUD).  
+Este documento describe la función `GenerarGramaticaCRUD`, la cual construye una gramatica de contexto orientada a operaciones tipo SQL (CRUD).  
 La función permite activar o desactivar producciones dependiendo de las operaciones permitidas, los tipos de datos soportados y si la Primary Key está habilitada o no.
 
 ---
 
-## 📌 Descripción General
+## Descripción General
 
-La función recibe tres parámetros:
+La funcion recibe tres parametros:
 
 - **operacionesCRUD**: lista con las operaciones soportadas.  
   Ejemplo: `["CREATE", "INSERT", "SELECT", "UPDATE", "DELETE"]`
 
-- **tiposSoportados**: lista de tipos de datos válidos para las columnas.  
+- **tiposSoportados**: lista de tipos de datos validos para las columnas.  
   Ejemplo: `["INT", "FLOAT", "TEXT"]`
 
 - **soportaPK**: boolean que indica si la gramática debe incluir la producción para `PRIMARY KEY`.
 
-La función genera una estructura `Gramatica` donde se agregan producciones dependiendo de los parámetros.
+La funcion genera una estructura `Gramatica` donde se agregan producciones dependiendo de los parametros.
 
 ---
 
-## 📌 Producciones Generadas
+## Producciones Generadas
 
 ### 1. Regla Inicial
 ```
@@ -36,10 +36,10 @@ SentenciaLista → ε
 
 ---
 
-## 📌 CRUD
+## CRUD
 
-### 🔨 CREATE  
-Si `"CREATE"` está habilitado:
+### CREATE  
+Si `"CREATE"` esta habilitado:
 
 ```
 Sentencia → CreateTable ';'
@@ -54,8 +54,8 @@ OptPK → ε
 
 ---
 
-### 🧩 INSERT  
-Si `"INSERT"` está habilitado:
+### INSERT  
+Si `"INSERT"` esta habilitado:
 
 ```
 Sentencia → Insert ';'
@@ -64,8 +64,8 @@ Insert → 'INSERT' 'INTO' id 'VALUES' '(' Valor ')'
 
 ---
 
-### 🔍 SELECT  
-Si `"SELECT"` está habilitado:
+### SELECT  
+Si `"SELECT"` esta habilitado:
 
 ```
 Sentencia → Select ';'
@@ -74,8 +74,8 @@ Select → 'SELECT' '*' 'FROM' id
 
 ---
 
-### ✏️ UPDATE  
-Si `"UPDATE"` está habilitado:
+### UPDATE  
+Si `"UPDATE"` esta habilitado:
 
 ```
 Sentencia → Update ';'
@@ -84,8 +84,8 @@ Update → 'UPDATE' id 'SET' id2 '=' Valor
 
 ---
 
-### 🗑️ DELETE  
-Si `"DELETE"` está habilitado:
+### DELETE  
+Si `"DELETE"` esta habilitado:
 
 ```
 Sentencia → Delete ';'
@@ -94,7 +94,7 @@ Delete → 'DELETE' 'FROM' id
 
 ---
 
-## 📌 Tipos Soportados
+## Tipos Soportados
 
 Por cada tipo presente:
 
@@ -111,7 +111,7 @@ Tipo → 'TEXT'
 
 ---
 
-## 📌 Valores
+## Valores
 
 ```
 Valor → num
@@ -122,13 +122,13 @@ Valor → 'FALSE'
 
 ---
 
-## 📌 Retorno
+## Retorno
 
-La función retorna la estructura completa `Gramatica` construida con todas las producciones activadas.
+La funcion retorna la estructura completa `Gramatica` construida con todas las producciones activadas.
 
 ---
 
-## ✔️ Uso
+## Uso
 
 Ejemplo:
 
