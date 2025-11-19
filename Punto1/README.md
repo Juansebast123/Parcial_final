@@ -5,7 +5,7 @@ La función permite activar o desactivar producciones dependiendo de las operaci
 
 ---
 
-## Descripción General
+## Descripcion General
 
 La funcion recibe tres parametros:
 
@@ -38,7 +38,7 @@ SentenciaLista → ε
 
 ## CRUD
 
-### CREATE  
+### Create  
 Si `"CREATE"` esta habilitado:
 
 ```
@@ -54,7 +54,7 @@ OptPK → ε
 
 ---
 
-### INSERT  
+### Insert  
 Si `"INSERT"` esta habilitado:
 
 ```
@@ -64,7 +64,7 @@ Insert → 'INSERT' 'INTO' id 'VALUES' '(' Valor ')'
 
 ---
 
-### SELECT  
+### Select  
 Si `"SELECT"` esta habilitado:
 
 ```
@@ -74,7 +74,7 @@ Select → 'SELECT' '*' 'FROM' id
 
 ---
 
-### UPDATE  
+### Update  
 Si `"UPDATE"` esta habilitado:
 
 ```
@@ -84,7 +84,7 @@ Update → 'UPDATE' id 'SET' id2 '=' Valor
 
 ---
 
-### DELETE  
+### Delete  
 Si `"DELETE"` esta habilitado:
 
 ```
