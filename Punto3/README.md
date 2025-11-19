@@ -1,6 +1,6 @@
-# Matrix Language – Intérprete de Matrices con ANTLR4 y Python
+# Matrix Language – Interprete de Matrices con ANTLR4 y Python
 
-Este proyecto implementa un **mini lenguaje para trabajar con matrices**, usando **ANTLR4** para generar el *lexer*, *parser* y *visitor*, mientras que Python ejecuta las instrucciones mediante un visitor personalizado (`MatrixEvalVisitor.py`).
+Este proyecto implementa un **mini lenguaje para trabajar con matrices**, usando **ANTLR4** para generar el *lexer*, *parser* y *visitor*, mientras que Python ejecuta las instrucciones mediante un visitor (`MatrixEvalVisitor.py`).
 
 El programa permite:
 
@@ -12,10 +12,9 @@ El programa permite:
 
 ---
 
-## 📌 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
-Parcial Final/
 │── main.py
 │── Matrix.g4
 │── MatrixLexer.py           # Generado por ANTLR
@@ -27,7 +26,7 @@ Parcial Final/
 
 ---
 
-## ▶️ Ejecución del Programa
+## Ejecucion del Programa
 
 El archivo `main.py` contiene un programa de prueba:
 
@@ -48,7 +47,7 @@ Este programa:
 
 ---
 
-## 🧮 Resultado Esperado
+## Resultado Esperado
 
 Multiplicando:
 
@@ -77,7 +76,7 @@ C (2x2):
 
 ---
 
-## ⚙️ Compilación de la Gramática
+## Compilación de la Gramática
 
 Para generar el lexer, parser y visitor:
 
@@ -87,30 +86,25 @@ antlr4 -Dlanguage=Python3 -visitor Matrix.g4
 
 ---
 
-## 📘 Descripción de Archivos
+## Descripción de Archivos
 
-### 🔹 `Matrix.g4`
-Define la gramática del lenguaje:
-- Declaración de matrices (`mat`)
+### `Matrix.g4`
+Define la gramatica del lenguaje:
+- Declaracion de matrices (`mat`)
 - Asignaciones
-- Expresiones con multiplicación
+- Expresiones con multiplicacion
 - Literales de matriz `[ [1,2,3], [4,5,6] ]`
 - Impresión
 
-### 🔹 `MatrixEvalVisitor.py`
+### `MatrixEvalVisitor.py`
 Implementa:
 - Memoria de matrices
 - Validación de dimensiones
-- Multiplicación matricial
-- Ejecución de sentencias
-- Impresión formateada
+- Multiplicacion matricial
+- Ejecucion de sentencias
+- Impresion formateada
 
-### 🔹 `main.py`
+### `main.py`
 Carga un programa como texto, lo parsea y ejecuta.
 
 ---
-
-## 👨‍💻 Autor
-Proyecto desarrollado por: **Julián David Briñez Sánchez**
-
-Lenguajes de Programación – Universidad Sergio Arboleda  
